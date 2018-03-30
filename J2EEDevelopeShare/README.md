@@ -1,3 +1,3 @@
 # JavaEE Development Sharing
 
-![SHARING](SHARING.JPG)
+![SHARING](/SHARING.JPG)
