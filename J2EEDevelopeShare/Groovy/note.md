@@ -264,7 +264,7 @@
 	assert greeting.toString() == 'Hi Groovy!'
 ```
 
-## WHERE
+## Working with regular expressions
 
 | Symbol | Meaning |
 | --- | --- |
