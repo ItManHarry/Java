@@ -4,11 +4,11 @@
 
 - 下载安装erlang
 	
-	原因在于RabbitMQ服务端代码是使用并发式语言erlang编写的，下载地址：http://www.erlang.org/downloads，双击.exe文件进行安装就好，安装完成之后创建一个名为ERLANG_HOME的环境变量，其值指向erlang的安装目录，同时将%ERLANG_HOME%\bin加入到Path中，最后打开命令行，输入erl，如果出现erlang的版本信息就表示erlang语言环境安装成功；
+	原因在于RabbitMQ服务端代码是使用并发式语言erlang编写的，[下载地址](http://www.erlang.org/downloads)，双击.exe文件进行安装就好，安装完成之后创建一个名为ERLANG_HOME的环境变量，其值指向erlang的安装目录，同时将%ERLANG_HOME%\bin加入到Path中，最后打开命令行，输入erl，如果出现erlang的版本信息就表示erlang语言环境安装成功；
 	
 - 下载RabbitMQ
 
-	下载地址：http://www.rabbitmq.com/，同样双击.exe进行安装就好
+	[下载地址](http://www.rabbitmq.com/)，同样双击.exe进行安装就好
 
 - 安装RabbitMQ-Plugins
 
@@ -16,4 +16,4 @@
 	
 - 安装完成
 
-	插件安装完之后，在浏览器输入http://localhost:15672进行验证，你会看到下面界面，输入用户名：guest，密码：guest你就可以进入管理界面，当然用户名密码你都可以变的
+	插件安装完之后，在浏览器输入[http://localhost:15672](http://localhost:15672)进行验证，你会看到下面界面，输入用户名：guest，密码：guest你就可以进入管理界面，当然用户名密码你都可以变的
