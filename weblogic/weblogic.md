@@ -108,26 +108,24 @@
 		<listen-port>7002</listen-port>
 		
 	3.修改domain/bin/stopWeblogic.sh，将端口号改成7002
-
-	4.登录控制台新增服务器-web
-
-	5.domain下新增web文件夹，拷贝security文件夹（为的是免密登录）
-
-	6.执行脚本启动web服务器，注意修改端口号
-
-		./bin/startManagedWebLogic.sh web http://localhost:7002	
-		
-	7.修改内存大小
 	
-		domain目录下bin目录下的setDomainEnv.cmd/sh
+	4.修改内存大小,domain目录下bin目录下的setDomainEnv.cmd/sh
 	
 		if "%JAVA_VENDOR%"=="Sun" (
-			set WLS_MEM_ARGS_64BIT=-Xms256m -Xmx4096m
-			set WLS_MEM_ARGS_32BIT=-Xms256m -Xmx4096m
+			set WLS_MEM_ARGS_64BIT=-Xms256m -Xmx1024m
+			set WLS_MEM_ARGS_32BIT=-Xms256m -Xmx1024m
 		) else (
-			set WLS_MEM_ARGS_64BIT=-Xms512m -Xmx4096m
-			set WLS_MEM_ARGS_32BIT=-Xms512m -Xmx4096m
+			set WLS_MEM_ARGS_64BIT=-Xms512m -Xmx1024m
+			set WLS_MEM_ARGS_32BIT=-Xms512m -Xmx1024m
 		)
+
+	5.登录控制台新增服务器-web
+
+	6.domain下新增web文件夹，拷贝security文件夹（为的是免密登录）
+
+	7.执行脚本启动web服务器，注意修改端口号
+
+		./bin/startManagedWebLogic.sh web http://localhost:7002	
 
 	8.上传start/stop脚本
 	
@@ -144,5 +142,5 @@
 			
 	9.更改domain管理后台登录地址，更改完后重启domain生效。
 	
-		参考网址：
+		参考网址：https://blog.csdn.net/iwlk/article/details/78844814
 ```
