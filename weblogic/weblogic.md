@@ -79,3 +79,70 @@
 		set WLS_MEM_ARGS_32BIT=-Xms512m -Xmx4096m
 	)
 ```
+# 修改端口号：
+
+- 在你创建的weblogic的域中找到config\config.xml文件。(如：xxxx\user_projects\domains\base_domain\config\config.xml)
+在config.xml文件中找到<server></server>语句块，修改<listen-port></listen-port>即可。
+
+```
+	 <server>
+		<name>AdminServer</name>
+		<ssl>
+		  <enabled>false</enabled>
+		</ssl>
+		<listen-port>7005</listen-port>
+		<listen-address>localhost</listen-address>
+		<data-source>
+		  <rmi-jdbc-security xsi:nil="true"></rmi-jdbc-security>
+		</data-source>
+	  </server>
+```
+
+# weblogic下创建多个domain
+
+```
+	1.创建domain(执行/weblogic/wlserver_10.3/common/bin/config.sh)
+
+	2.修改控制台端口号，修改domain/config/config.xml,在server节点下新增监听端口
+
+		<listen-port>7002</listen-port>
+		
+	3.修改domain/bin/stopWeblogic.sh，将端口号改成7002
+
+	4.登录控制台新增服务器-web
+
+	5.domain下新增web文件夹，拷贝security文件夹（为的是免密登录）
+
+	6.执行脚本启动web服务器，注意修改端口号
+
+		./bin/startManagedWebLogic.sh web http://localhost:7002	
+		
+	7.修改内存大小
+	
+		domain目录下bin目录下的setDomainEnv.cmd/sh
+	
+		if "%JAVA_VENDOR%"=="Sun" (
+			set WLS_MEM_ARGS_64BIT=-Xms256m -Xmx4096m
+			set WLS_MEM_ARGS_32BIT=-Xms256m -Xmx4096m
+		) else (
+			set WLS_MEM_ARGS_64BIT=-Xms512m -Xmx4096m
+			set WLS_MEM_ARGS_32BIT=-Xms512m -Xmx4096m
+		)
+
+	8.上传start/stop脚本
+	
+		start.sh
+		
+			nohup ./startWebLogic.sh &
+			sleep 60
+			nohup ./bin/startManagedWebLogic.sh web http://localhost:7002 > ./doosvn_domain.log 2>&1 &
+		
+		stop.sh
+		
+			./bin/stopManagedWebLogic.sh dcs t3://DICLINUX03:7002
+			./bin/stopWebLogic.sh
+			
+	9.更改domain管理后台登录地址，更改完后重启domain生效。
+	
+		参考网址：
+```
